@@ -17,6 +17,7 @@ namespace PistolWhipModSelector
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            PistolWhipModSelector.Settings.Settings settings = new PistolWhipModSelector.Settings.Settings();
             FolderPath folderPath = new FolderPath();
 
             Application.Run(new Main());
