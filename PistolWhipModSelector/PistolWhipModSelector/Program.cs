@@ -20,9 +20,10 @@ namespace PistolWhipModSelector
             Application.SetCompatibleTextRenderingDefault(false);
 
             PistolWhipModSettings settings = new PistolWhipModSettings();
-            FolderPath folderPath = new FolderPath(settings, true);
+            FolderPath folderPath = new FolderPath(settings);
+
             if(folderPath.ForceExit == false)
-                Application.Run(new MainForm());
+                Application.Run(new MainForm(settings));
         }
     }
 }

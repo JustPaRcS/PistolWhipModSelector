@@ -11,7 +11,7 @@ using System.Xml;
 
 namespace PistolWhipModSelector.Settings
 {
-    class PistolWhipModSettings
+    public class PistolWhipModSettings
     {
         public string MainSettingsFolderPath { get; private set; }
         public string MainSettingsPath { get; private set; }
