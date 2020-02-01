@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace PistolWhipModSelector.GamePath
 {
-    public partial class SetGameFolderPath : Form
+    public partial class SetGameFolderPathForm : Form
     {
         public string CustomGamePath { get; set; }
         public string SteamGamePath { get; set; }
 
-        public SetGameFolderPath()
+        public SetGameFolderPathForm()
         {
             InitializeComponent();
             GamePathErrorLabel.Text = "";

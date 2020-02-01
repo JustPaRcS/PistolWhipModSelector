@@ -11,19 +11,21 @@ using System.Xml;
 
 namespace PistolWhipModSelector.Settings
 {
-    class Settings
+    class PistolWhipModSettings
     {
         public string MainSettingsFolderPath { get; private set; }
         public string MainSettingsPath { get; private set; }
+        private XmlDocument xmlDoc;
 
-
-        public Settings()
+        public PistolWhipModSettings()
         {
             MainSettingsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\PistolWhipCustomMod_PaRcS";
             MainSettingsPath = this.MainSettingsFolderPath + @"\PistolWhipModSettings.xml";
 
             this.CheckMainSettingsFolderExist();
             this.CheckMainSettingsExist();
+
+            this.LoadXmlDoc();
         }
 
         private void CheckMainSettingsFolderExist()
@@ -57,31 +59,31 @@ namespace PistolWhipModSelector.Settings
 
         private void CreateMainSettings()
         {
-            XmlDocument doc = new XmlDocument();
-            XmlNode xmlNode = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
-            doc.AppendChild(xmlNode);
+            xmlDoc = new XmlDocument();
+            XmlNode xmlNode = xmlDoc.CreateXmlDeclaration("1.0", "UTF-8", null);
+            xmlDoc.AppendChild(xmlNode);
 
-            XmlNode rootNode = doc.CreateElement("PistolWhipModSettings");
-            doc.AppendChild(rootNode);
+            XmlNode rootNode = xmlDoc.CreateElement("PistolWhipModSettings");
+            xmlDoc.AppendChild(rootNode);
 
             //-------------------------------------------------------------------------------------------
 
-            XmlNode infoNode = doc.CreateElement("info");
+            XmlNode infoNode = xmlDoc.CreateElement("info");
             rootNode.AppendChild(infoNode);
 
-            XmlNode node = doc.CreateElement("version");
+            XmlNode node = xmlDoc.CreateElement("version");
             node.InnerText = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             infoNode.AppendChild(node);
 
-            node = doc.CreateElement("firstInstalledDate");
-            XmlAttribute attribute = doc.CreateAttribute("timezone");
+            node = xmlDoc.CreateElement("firstInstalledDate");
+            XmlAttribute attribute = xmlDoc.CreateAttribute("timezone");
             attribute.Value = "UTC";
             node.Attributes.Append(attribute);
             node.InnerText = DateTime.UtcNow.ToString();
             infoNode.AppendChild(node);
 
-            node = doc.CreateElement("lastChangeDate");
-            attribute = doc.CreateAttribute("timezone");
+            node = xmlDoc.CreateElement("lastChangeDate");
+            attribute = xmlDoc.CreateAttribute("timezone");
             attribute.Value = "UTC";
             node.Attributes.Append(attribute);
             node.InnerText = DateTime.UtcNow.ToString();
@@ -89,33 +91,60 @@ namespace PistolWhipModSelector.Settings
 
             //-------------------------------------------------------------------------------------------
 
-            XmlNode creatorNode = doc.CreateElement("creator");
+            XmlNode creatorNode = xmlDoc.CreateElement("creator");
             rootNode.AppendChild(creatorNode);
 
-            node = doc.CreateElement("name");
+            node = xmlDoc.CreateElement("name");
             node.InnerText = "PaRcS";
             creatorNode.AppendChild(node);
 
-            node = doc.CreateElement("discord");
+            node = xmlDoc.CreateElement("discord");
             node.InnerText = "PaRcS#2179";
             creatorNode.AppendChild(node);
 
-            node = doc.CreateElement("github");
+            node = xmlDoc.CreateElement("github");
             node.InnerText = "github.com/JustPaRcS";
             creatorNode.AppendChild(node);
 
             //-------------------------------------------------------------------------------------------
 
-            XmlNode settingsNode = doc.CreateElement("settings");
+            XmlNode settingsNode = xmlDoc.CreateElement("settings");
             rootNode.AppendChild(settingsNode);
 
-            node = doc.CreateElement("gameFolderPath");
+            node = xmlDoc.CreateElement("gameFolderPath");
             node.InnerText = "";
             settingsNode.AppendChild(node);
 
             //-------------------------------------------------------------------------------------------
 
-            doc.Save(this.MainSettingsPath);
+            this.SaveXmlDoc();
+        }
+
+        private void LoadXmlDoc()
+        {
+            xmlDoc = new XmlDocument();
+            xmlDoc.Load(this.MainSettingsPath);
+        }
+        private void SaveXmlDoc()
+        {
+            XmlNode node = xmlDoc.SelectSingleNode("//PistolWhipModSettings/info/lastChangeDate");
+            node.InnerText = DateTime.UtcNow.ToString();
+
+            xmlDoc.Save(this.MainSettingsPath);
+        }
+
+        public void SetGameFolderPath(string path)
+        {
+            XmlNode node = xmlDoc.SelectSingleNode("//PistolWhipModSettings/settings/gameFolderPath");
+            node.InnerText = path;
+
+            this.SaveXmlDoc();
+        }
+
+        public string GetGameFolderPath()
+        {
+            XmlNode node = xmlDoc.SelectSingleNode("//PistolWhipModSettings/settings/gameFolderPath");
+            return node.InnerText;
         }
     }
 }

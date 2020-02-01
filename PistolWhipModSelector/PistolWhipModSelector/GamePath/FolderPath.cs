@@ -6,31 +6,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PistolWhipModSelector.Settings;
 
-namespace PistolWhipModSelector
+namespace PistolWhipModSelector.GamePath
 {
     class FolderPath
     {
         public string SteamPath { get; private set; }
         public string SteamGamePath { get; private set; }
         public string GameFolderPath { get; private set; }
+        public bool ForceExit { get; private set; } = false;
 
-        public FolderPath()
+        public FolderPath(PistolWhipModSettings settings, bool forceChange = false)
         {
-            this.SteamPath = this.GetSteamPath();
-            if (!String.IsNullOrWhiteSpace(this.SteamPath))
+            if (String.IsNullOrWhiteSpace(settings.GetGameFolderPath()) || forceChange == true)
             {
-                this.SteamGamePath = this.GetSteamGamePath(this.SteamPath);
-            }
-
-            using (var test = new PistolWhipModSelector.GamePath.SetGameFolderPath())
-            {
-                test.SteamGamePath = this.SteamGamePath;
-
-                var result = test.ShowDialog();
-                if (result == DialogResult.OK)
+                this.SteamPath = this.GetSteamPath();
+                if (!String.IsNullOrWhiteSpace(this.SteamPath))
                 {
-                    this.GameFolderPath = test.CustomGamePath;
+                    this.SteamGamePath = this.GetSteamGamePath(this.SteamPath);
+                }
+
+                using (var test = new SetGameFolderPathForm())
+                {
+                    test.SteamGamePath = this.SteamGamePath;
+
+                    var result = test.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        this.GameFolderPath = test.CustomGamePath;
+                        settings.SetGameFolderPath(this.GameFolderPath);
+                    }
+
+                    if (result == DialogResult.Cancel)
+                    {
+                        if (String.IsNullOrWhiteSpace(settings.GetGameFolderPath()))
+                        {
+                            MessageBox.Show("Forced exit because no game folder is set!", "No folder set!");
+                            this.ForceExit = true;
+                        }
+                    }
                 }
             }
         }

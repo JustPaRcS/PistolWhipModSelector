@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PistolWhipModSelector.GamePath;
+using PistolWhipModSelector.Settings;
 
 namespace PistolWhipModSelector
 {
@@ -17,10 +19,10 @@ namespace PistolWhipModSelector
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            PistolWhipModSelector.Settings.Settings settings = new PistolWhipModSelector.Settings.Settings();
-            FolderPath folderPath = new FolderPath();
-
-            Application.Run(new Main());
+            PistolWhipModSettings settings = new PistolWhipModSettings();
+            FolderPath folderPath = new FolderPath(settings, true);
+            if(folderPath.ForceExit == false)
+                Application.Run(new MainForm());
         }
     }
 }

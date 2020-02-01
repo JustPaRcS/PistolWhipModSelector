@@ -1,6 +1,6 @@
 ﻿namespace PistolWhipModSelector.GamePath
 {
-    partial class SetGameFolderPath
+    partial class SetGameFolderPathForm
     {
         /// <summary>
         /// Required designer variable.
