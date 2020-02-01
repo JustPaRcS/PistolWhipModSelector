@@ -1,6 +1,6 @@
 ﻿namespace PistolWhipModSelector.GamePath
 {
-    partial class SetGamePath
+    partial class SetGameFolderPath
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetGamePath));
             this.CustomFolderPathLabel = new System.Windows.Forms.Label();
-            this.CustomFolderSearchButton = new System.Windows.Forms.Button();
             this.GameFolderOkButton = new System.Windows.Forms.Button();
             this.CustomFolderPathTextBox = new System.Windows.Forms.TextBox();
             this.GameFolderCancelButton = new System.Windows.Forms.Button();
@@ -43,6 +41,7 @@
             this.SteamGameFolderPathUseButton = new System.Windows.Forms.Button();
             this.SteamGameFolderPathTextBox = new System.Windows.Forms.TextBox();
             this.SteamGameFolderLabel = new System.Windows.Forms.Label();
+            this.CustomFolderSearchButton = new System.Windows.Forms.Button();
             this.CustomFolderPathPanel.SuspendLayout();
             this.SteamGameFolderPanel.SuspendLayout();
             this.SuspendLayout();
@@ -56,17 +55,6 @@
             this.CustomFolderPathLabel.Size = new System.Drawing.Size(181, 20);
             this.CustomFolderPathLabel.TabIndex = 0;
             this.CustomFolderPathLabel.Text = "Select \"Pistol Whip.exe\":";
-            // 
-            // CustomFolderSearchButton
-            // 
-            this.CustomFolderSearchButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CustomFolderSearchButton.BackgroundImage")));
-            this.CustomFolderSearchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CustomFolderSearchButton.Location = new System.Drawing.Point(349, 20);
-            this.CustomFolderSearchButton.Name = "CustomFolderSearchButton";
-            this.CustomFolderSearchButton.Size = new System.Drawing.Size(30, 30);
-            this.CustomFolderSearchButton.TabIndex = 1;
-            this.CustomFolderSearchButton.UseVisualStyleBackColor = true;
-            this.CustomFolderSearchButton.Click += new System.EventHandler(this.CustomFolderSearchButton_Click);
             // 
             // GameFolderOkButton
             // 
@@ -125,7 +113,7 @@
             // 
             // CustomFolderSteamButton
             // 
-            this.CustomFolderSteamButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CustomFolderSteamButton.BackgroundImage")));
+            this.CustomFolderSteamButton.BackgroundImage = global::PistolWhipModSelector.Pictures.Steam;
             this.CustomFolderSteamButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CustomFolderSteamButton.Location = new System.Drawing.Point(385, 20);
             this.CustomFolderSteamButton.Name = "CustomFolderSteamButton";
@@ -147,7 +135,7 @@
             // 
             // SteamGameFolderNotUseButton
             // 
-            this.SteamGameFolderNotUseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SteamGameFolderNotUseButton.BackgroundImage")));
+            this.SteamGameFolderNotUseButton.BackgroundImage = global::PistolWhipModSelector.Pictures.Cross;
             this.SteamGameFolderNotUseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.SteamGameFolderNotUseButton.Location = new System.Drawing.Point(387, 21);
             this.SteamGameFolderNotUseButton.Name = "SteamGameFolderNotUseButton";
@@ -158,7 +146,7 @@
             // 
             // SteamGameFolderPathUseButton
             // 
-            this.SteamGameFolderPathUseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SteamGameFolderPathUseButton.BackgroundImage")));
+            this.SteamGameFolderPathUseButton.BackgroundImage = global::PistolWhipModSelector.Pictures.Check;
             this.SteamGameFolderPathUseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.SteamGameFolderPathUseButton.Location = new System.Drawing.Point(351, 21);
             this.SteamGameFolderPathUseButton.Name = "SteamGameFolderPathUseButton";
@@ -185,7 +173,18 @@
             this.SteamGameFolderLabel.TabIndex = 0;
             this.SteamGameFolderLabel.Text = "Use your steam folder?";
             // 
-            // SetGamePath
+            // CustomFolderSearchButton
+            // 
+            this.CustomFolderSearchButton.BackgroundImage = global::PistolWhipModSelector.Pictures.Folder;
+            this.CustomFolderSearchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CustomFolderSearchButton.Location = new System.Drawing.Point(349, 20);
+            this.CustomFolderSearchButton.Name = "CustomFolderSearchButton";
+            this.CustomFolderSearchButton.Size = new System.Drawing.Size(30, 30);
+            this.CustomFolderSearchButton.TabIndex = 1;
+            this.CustomFolderSearchButton.UseVisualStyleBackColor = true;
+            this.CustomFolderSearchButton.Click += new System.EventHandler(this.CustomFolderSearchButton_Click);
+            // 
+            // SetGameFolderPath
             // 
             this.AcceptButton = this.GameFolderOkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,7 +198,7 @@
             this.Controls.Add(this.GameFolderOkButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "SetGamePath";
+            this.Name = "SetGameFolderPath";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Set game folder";
             this.Load += new System.EventHandler(this.CustomPath_Load);

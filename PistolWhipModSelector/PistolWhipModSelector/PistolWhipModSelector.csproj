@@ -47,18 +47,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GamePath\FolderPath.cs" />
+    <Compile Include="GamePath\SetGameFolderPath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GamePath\SetGameFolderPath.Designer.cs">
+      <DependentUpon>SetGameFolderPath.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pictures.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pictures.resx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GamePath\SetGamePath.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GamePath\SetGamePath.Designer.cs" />
+    <EmbeddedResource Include="GamePath\SetGameFolderPath.resx">
+      <DependentUpon>SetGameFolderPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pictures.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Pictures.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -68,7 +82,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="GamePath\SetGamePath.resx" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -81,6 +95,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\steam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notAllowed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\danger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speechBubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\work.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\File.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,7 +23,7 @@ namespace PistolWhipModSelector
                 this.SteamGamePath = this.GetSteamGamePath(this.SteamPath);
             }
 
-            using (var test = new PistolWhipModSelector.GamePath.SetGamePath())
+            using (var test = new PistolWhipModSelector.GamePath.SetGameFolderPath())
             {
                 test.SteamGamePath = this.SteamGamePath;
 

@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace PistolWhipModSelector.GamePath
 {
-    public partial class SetGamePath : Form
+    public partial class SetGameFolderPath : Form
     {
         public string CustomGamePath { get; set; }
         public string SteamGamePath { get; set; }
 
-        public SetGamePath()
+        public SetGameFolderPath()
         {
             InitializeComponent();
             GamePathErrorLabel.Text = "";
@@ -73,7 +73,7 @@ namespace PistolWhipModSelector.GamePath
         {
             DialogResult result = openFileDialog1.ShowDialog();
 
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 string customFolderPath = openFileDialog1.FileName;
                 CustomFolderPathTextBox.Text = customFolderPath;
@@ -91,7 +91,7 @@ namespace PistolWhipModSelector.GamePath
         {
             this.CustomGamePath = CustomFolderPathTextBox.Text;
 
-            if(this.CustomGamePath.EndsWith("Pistol Whip.exe"))
+            if (this.CustomGamePath.EndsWith("Pistol Whip.exe"))
                 this.CustomGamePath = this.CustomGamePath.Replace("\\Pistol Whip.exe", "");
 
             if (!Directory.Exists(this.CustomGamePath))
