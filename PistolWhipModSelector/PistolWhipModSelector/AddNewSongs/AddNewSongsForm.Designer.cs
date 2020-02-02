@@ -146,6 +146,7 @@
             this.CustomSongMoveCheckBox.TabIndex = 10;
             this.CustomSongMoveCheckBox.Text = "Move?";
             this.CustomSongMoveCheckBox.UseVisualStyleBackColor = true;
+            this.CustomSongMoveCheckBox.CheckedChanged += new System.EventHandler(this.CustomSongMoveCheckBox_CheckedChanged);
             // 
             // AddNewSongsForm
             // 

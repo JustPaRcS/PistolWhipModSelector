@@ -82,5 +82,23 @@ namespace PistolWhipModSelector.AddNewSongs
             CustomSongTitleTextBox.BackColor = Color.LightGreen;
             CustomSongAuthorTextBox.BackColor = Color.LightGreen;
         }
+
+        private void CustomSongMoveCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CustomSongMoveCheckBox.Checked)
+            {
+                var result = MessageBox.Show("Your anti-virus program might get triggered!\n \nStill wanna enable?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (result == DialogResult.OK)
+                {
+                    CustomSongMoveCheckBox.Checked = true;
+                }
+
+                if (result == DialogResult.Cancel)
+                {
+                    CustomSongMoveCheckBox.Checked = false;
+                }
+            }
+        }
     }
 }

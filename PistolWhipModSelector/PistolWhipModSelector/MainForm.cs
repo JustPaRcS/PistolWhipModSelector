@@ -28,7 +28,7 @@ namespace PistolWhipModSelector
         {
             this.ReloadSongs();
         }
-        private void reloadAllButton_Click(object sender, EventArgs e)
+        private void ReloadAllButton_Click(object sender, EventArgs e)
         {
             OriginalSongNamesListBox.SetSelected(OriginalSongNamesListBox.SelectedIndex, true);
         }

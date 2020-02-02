@@ -35,7 +35,7 @@
             this.songTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reloadAllButton = new System.Windows.Forms.Button();
+            this.ReloadAllButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CustomSongsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,23 +114,23 @@
             this.songPath.HeaderText = "Path";
             this.songPath.Name = "songPath";
             // 
-            // reloadAllButton
+            // ReloadAllButton
             // 
-            this.reloadAllButton.BackgroundImage = global::PistolWhipModSelector.Pictures.Reload;
-            this.reloadAllButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.reloadAllButton.Location = new System.Drawing.Point(758, 12);
-            this.reloadAllButton.Name = "reloadAllButton";
-            this.reloadAllButton.Size = new System.Drawing.Size(30, 30);
-            this.reloadAllButton.TabIndex = 4;
-            this.reloadAllButton.UseVisualStyleBackColor = true;
-            this.reloadAllButton.Click += new System.EventHandler(this.reloadAllButton_Click);
+            this.ReloadAllButton.BackgroundImage = global::PistolWhipModSelector.Pictures.Reload;
+            this.ReloadAllButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ReloadAllButton.Location = new System.Drawing.Point(758, 12);
+            this.ReloadAllButton.Name = "ReloadAllButton";
+            this.ReloadAllButton.Size = new System.Drawing.Size(30, 30);
+            this.ReloadAllButton.TabIndex = 4;
+            this.ReloadAllButton.UseVisualStyleBackColor = true;
+            this.ReloadAllButton.Click += new System.EventHandler(this.ReloadAllButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.reloadAllButton);
+            this.Controls.Add(this.ReloadAllButton);
             this.Controls.Add(this.CustomSongsDataGridView);
             this.Controls.Add(this.OriginalSongShowNameCheckBox);
             this.Controls.Add(this.OriginalSongShowIDCheckBox);
@@ -153,7 +153,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn songTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn songAuthor;
         private System.Windows.Forms.DataGridViewTextBoxColumn songPath;
-        private System.Windows.Forms.Button reloadAllButton;
+        private System.Windows.Forms.Button ReloadAllButton;
     }
 }
 
