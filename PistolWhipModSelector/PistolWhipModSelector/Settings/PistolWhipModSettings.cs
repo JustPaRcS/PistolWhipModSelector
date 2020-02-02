@@ -13,8 +13,8 @@ namespace PistolWhipModSelector.Settings
 {
     public class PistolWhipModSettings
     {
-        public string MainSettingsFolderPath { get; private set; }
-        public string MainSettingsPath { get; private set; }
+        private string MainSettingsFolderPath { get; set; }
+        private string MainSettingsPath { get; set; }
         private XmlDocument xmlDoc;
 
         public PistolWhipModSettings()

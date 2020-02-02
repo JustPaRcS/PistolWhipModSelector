@@ -12,19 +12,17 @@ namespace PistolWhipModSelector.GamePath
 {
     class FolderPath
     {
-        public string SteamPath { get; private set; }
         public string SteamGamePath { get; private set; }
-        public string GameFolderPath { get; private set; }
         public bool ForceExit { get; private set; } = false;
 
         public FolderPath(PistolWhipModSettings settings, bool forceChange = false)
         {
             if (String.IsNullOrWhiteSpace(settings.GetGameFolderPath()) || forceChange == true)
             {
-                this.SteamPath = this.GetSteamPath();
-                if (!String.IsNullOrWhiteSpace(this.SteamPath))
+                GlobalVariables.SteamPath = this.GetSteamPath();
+                if (!String.IsNullOrWhiteSpace(GlobalVariables.SteamPath))
                 {
-                    this.SteamGamePath = this.GetSteamGamePath(this.SteamPath);
+                    this.SteamGamePath = this.GetSteamGamePath(GlobalVariables.SteamPath);
                 }
 
                 using (var test = new SetGameFolderPathForm())
@@ -34,8 +32,8 @@ namespace PistolWhipModSelector.GamePath
                     var result = test.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        this.GameFolderPath = test.CustomGamePath;
-                        settings.SetGameFolderPath(this.GameFolderPath);
+                        GlobalVariables.GameFolderPath = test.CustomGamePath;
+                        settings.SetGameFolderPath(GlobalVariables.GameFolderPath);
                     }
 
                     if (result == DialogResult.Cancel)

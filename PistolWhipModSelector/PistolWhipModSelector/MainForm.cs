@@ -14,16 +14,16 @@ namespace PistolWhipModSelector
 {
     public partial class MainForm : Form
     {
-        private PistolWhipModSettings folderSettings;
-        public MainForm(PistolWhipModSettings modSettings)
+        private List<AudioLineProperties> audioLines;
+        public MainForm( )
         {
-            this.folderSettings = modSettings;
             InitializeComponent();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ReadAllAudioSongs readAllAudioSongs = new ReadAllAudioSongs(this.folderSettings.GetGameFolderPath());
+            ReadAllAudioSongs readAllAudioSongs = new ReadAllAudioSongs(GlobalVariables.GameFolderPath);
+            this.audioLines = readAllAudioSongs.AudioLines;
         }
     }
 }

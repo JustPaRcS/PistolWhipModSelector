@@ -22,8 +22,12 @@ namespace PistolWhipModSelector
             PistolWhipModSettings settings = new PistolWhipModSettings();
             FolderPath folderPath = new FolderPath(settings);
 
-            if(folderPath.ForceExit == false)
-                Application.Run(new MainForm(settings));
+            if (folderPath.ForceExit == false)
+            {
+                GlobalVariables.GameFolderPath = settings.GetGameFolderPath();
+                ModsFolder modsFolder = new ModsFolder();
+                Application.Run(new MainForm());
+            }
         }
     }
 }

@@ -17,8 +17,6 @@ namespace PistolWhipModSelector.SaveOriginalFiles
             this.GameFolderPath = gameFolderPath;
 
             this.AudioLines = this.GetAudioLines();
-
-            string test = AudioLines[0].StreamedAudioName;
         }
 
         private List<AudioLineProperties> GetAudioLines()
