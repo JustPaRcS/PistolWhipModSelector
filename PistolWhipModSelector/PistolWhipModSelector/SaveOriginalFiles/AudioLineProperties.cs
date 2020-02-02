@@ -15,7 +15,7 @@ namespace PistolWhipModSelector.SaveOriginalFiles
         public string GeneratedAudioFile { get; private set; }
         public string WwiseObjectPath { get; private set; }
         public string Notes { get; private set; }
-        public string StreamedAudioName{ get => GetBeautifulName(); }
+        public string AudioName{ get => GetBeautifulName(); }
 
         public AudioLineProperties(string streamedAudio, string id, string name, string audioSourceFile, string generatedAudioFile, string wWiseObjectPath, string notes)
         {

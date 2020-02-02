@@ -25,6 +25,8 @@ namespace PistolWhipModSelector
             if (folderPath.ForceExit == false)
             {
                 GlobalVariables.GameFolderPath = settings.GetGameFolderPath();
+                GlobalVariables.SongsFolderPath = settings.GetGameFolderPath() + @"\Pistol Whip_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows";
+
                 ModsFolder modsFolder = new ModsFolder();
                 Application.Run(new MainForm());
             }

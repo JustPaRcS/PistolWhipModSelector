@@ -14,7 +14,7 @@ namespace PistolWhipModSelector
 {
     public partial class MainForm : Form
     {
-        private List<AudioLineProperties> audioLines;
+        private List<AudioLineProperties> audioLines = null;
         public MainForm( )
         {
             InitializeComponent();
@@ -24,6 +24,8 @@ namespace PistolWhipModSelector
         {
             ReadAllAudioSongs readAllAudioSongs = new ReadAllAudioSongs(GlobalVariables.GameFolderPath);
             this.audioLines = readAllAudioSongs.AudioLines;
+
+            OriginalFilesSaver originalFilesSaver = new OriginalFilesSaver(this.audioLines);
         }
     }
 }
