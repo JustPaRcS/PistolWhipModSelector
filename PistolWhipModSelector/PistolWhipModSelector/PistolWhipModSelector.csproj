@@ -61,6 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewSongs\AddNewSongs.cs" />
+    <Compile Include="AddNewSongs\AddNewSongsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewSongs\AddNewSongsForm.Designer.cs">
+      <DependentUpon>AddNewSongsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewSongs\NewSongProperties.cs" />
     <Compile Include="GamePath\FolderPath.cs" />
     <Compile Include="GamePath\SetGameFolderPathForm.cs">
       <SubType>Form</SubType>
@@ -87,6 +95,9 @@
     <Compile Include="SaveOriginalFiles\ReadAllAudioSongs.cs" />
     <Compile Include="Settings\ModsFolder.cs" />
     <Compile Include="Settings\PistolWhipModSettings.cs" />
+    <EmbeddedResource Include="AddNewSongs\AddNewSongsForm.resx">
+      <DependentUpon>AddNewSongsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GamePath\SetGameFolderPathForm.resx">
       <DependentUpon>SetGameFolderPathForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +184,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

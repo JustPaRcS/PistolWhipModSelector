@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PistolWhipModSelector.Settings;
 using PistolWhipModSelector.SaveOriginalFiles;
+using System.IO;
 
 namespace PistolWhipModSelector
 {
@@ -25,11 +26,22 @@ namespace PistolWhipModSelector
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            this.ReloadSongs();
+        }
+        private void reloadAllButton_Click(object sender, EventArgs e)
+        {
+            OriginalSongNamesListBox.SetSelected(OriginalSongNamesListBox.SelectedIndex, true);
+        }
+
+        private void ReloadSongs()
+        {
             ReadAllAudioSongs readAllAudioSongs = new ReadAllAudioSongs(GlobalVariables.GameFolderPath);
             this.audioLines = readAllAudioSongs.AudioLines;
 
             OriginalFilesSaver originalFilesSaver = new OriginalFilesSaver(this.audioLines);
             modsFolder.AvaiableCustomSongsFolder(audioLines);
+
+            GlobalVariables.GetCustomSongFolderPath(audioLines[3].ID);
 
             this.FillOriginalSongNamesList();
         }
@@ -41,6 +53,8 @@ namespace PistolWhipModSelector
         }
         private void FillOriginalSongNamesList()
         {
+            OriginalSongNamesListBox.Items.Clear();
+
             foreach (AudioLineProperties properties in audioLines)
             {
                 string newItem = "";
@@ -64,6 +78,55 @@ namespace PistolWhipModSelector
 
                 OriginalSongNamesListBox.Items.Add(newItem);
             }
+        }
+
+        private void OriginalSongNamesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CustomSongsDataGridView.Rows.Clear();
+
+            string customSongsFolderPath = GlobalVariables.GetCustomSongFolderPath(audioLines[OriginalSongNamesListBox.SelectedIndex].ID);
+
+            GlobalVariables.CurrentID = audioLines[OriginalSongNamesListBox.SelectedIndex].ID;
+
+            string[] files = Directory.GetFiles(customSongsFolderPath, "*.wem");
+
+            if (files.Count() > 0)
+            {
+                CustomSongsDataGridView.Rows.Add(files.Count());
+                int counter = 0;
+                foreach (string file in files)
+                {
+                    var row = CustomSongsDataGridView.Rows[counter];
+                    row.Cells["songPath"].Value = file;
+
+                    string fileName = file.Replace(customSongsFolderPath + "\\", "");
+                    fileName = fileName.Replace(".wem", "");
+
+                    string[] sort = fileName.Split('-');
+
+                    Array.Resize(ref sort, 4);
+
+                    string id = sort[0];
+                    string title = sort[1];
+                    string author = sort[2];
+
+                    row.Cells["songTitle"].Value = title;
+                    row.Cells["songAuthor"].Value = author;
+
+                    counter++;
+                }
+            }
+        }
+
+        private void CustomSongsDataGridView_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            AddNewSongs.AddNewSongs addNewSongs = new AddNewSongs.AddNewSongs(fileList);
+        }
+
+        private void CustomSongsDataGridView_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
         }
     }
 }

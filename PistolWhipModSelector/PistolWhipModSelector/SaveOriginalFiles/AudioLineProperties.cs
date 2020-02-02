@@ -15,7 +15,8 @@ namespace PistolWhipModSelector.SaveOriginalFiles
         public string GeneratedAudioFile { get; private set; }
         public string WwiseObjectPath { get; private set; }
         public string Notes { get; private set; }
-        public string AudioName{ get => GetBeautifulName(); }
+        public string AudioName{ get => this.GetComparedName(); }
+        public string AudioNameID { get => this.GetComparedNameID(); }
 
         public AudioLineProperties(string streamedAudio, string id, string name, string audioSourceFile, string generatedAudioFile, string wWiseObjectPath, string notes)
         {
@@ -28,12 +29,21 @@ namespace PistolWhipModSelector.SaveOriginalFiles
             this.Notes = notes;
         }
 
-        private string GetBeautifulName()
+        private string GetComparedName()
         {
             string result = null;
 
             result = this.WwiseObjectPath.Replace("\\" + this.Name, "");
             result = result.Split('\\').Last();
+
+            return result;
+        }
+
+        private string GetComparedNameID()
+        {
+            string result = null;
+
+            result = this.AudioNameID + " - " + this.AudioName;
 
             return result;
         }

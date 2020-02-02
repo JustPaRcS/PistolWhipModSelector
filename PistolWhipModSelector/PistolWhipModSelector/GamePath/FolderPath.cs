@@ -25,14 +25,14 @@ namespace PistolWhipModSelector.GamePath
                     this.SteamGamePath = this.GetSteamGamePath(GlobalVariables.SteamPath);
                 }
 
-                using (var test = new SetGameFolderPathForm())
+                using (var form = new SetGameFolderPathForm())
                 {
-                    test.SteamGamePath = this.SteamGamePath;
+                    form.SteamGamePath = this.SteamGamePath;
 
-                    var result = test.ShowDialog();
+                    var result = form.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        GlobalVariables.GameFolderPath = test.CustomGamePath;
+                        GlobalVariables.GameFolderPath = form.CustomGamePath;
                         settings.SetGameFolderPath(GlobalVariables.GameFolderPath);
                     }
 
