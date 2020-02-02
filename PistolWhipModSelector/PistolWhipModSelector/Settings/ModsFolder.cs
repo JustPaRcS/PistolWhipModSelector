@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PistolWhipModSelector.SaveOriginalFiles;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PistolWhipModSelector.Settings
 {
-    class ModsFolder
+    public class ModsFolder
     {
         public ModsFolder()
         {
@@ -54,6 +55,20 @@ namespace PistolWhipModSelector.Settings
         private void CreateCustomSongsFolder()
         {
             Directory.CreateDirectory(GlobalVariables.CustomSongsFolderPath);
+        }
+
+        public void AvaiableCustomSongsFolder(List<AudioLineProperties> audioLines)
+        {
+            string path = "";
+
+            foreach (AudioLineProperties properties in audioLines)
+            {
+                path = GlobalVariables.CustomSongsFolderPath + $@"\{properties.ID} - {properties.AudioName}";
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+            }
         }
     }
 }

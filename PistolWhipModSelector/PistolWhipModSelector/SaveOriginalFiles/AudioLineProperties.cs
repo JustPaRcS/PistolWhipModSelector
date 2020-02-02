@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PistolWhipModSelector.SaveOriginalFiles
 {
-    class AudioLineProperties
+    public class AudioLineProperties
     {
         public string StreamedAudio { get; private set; }
         public string ID { get; private set; }

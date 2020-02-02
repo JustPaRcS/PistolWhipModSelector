@@ -15,8 +15,11 @@ namespace PistolWhipModSelector
     public partial class MainForm : Form
     {
         private List<AudioLineProperties> audioLines = null;
-        public MainForm( )
+        private ModsFolder modsFolder = null;
+
+        public MainForm(ModsFolder modsFolder)
         {
+            this.modsFolder = modsFolder;
             InitializeComponent();
         }
 
@@ -26,10 +29,16 @@ namespace PistolWhipModSelector
             this.audioLines = readAllAudioSongs.AudioLines;
 
             OriginalFilesSaver originalFilesSaver = new OriginalFilesSaver(this.audioLines);
+            modsFolder.AvaiableCustomSongsFolder(audioLines);
 
             this.FillOriginalSongNamesList();
         }
 
+        private void OriginalSongCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            OriginalSongNamesListBox.Items.Clear();
+            FillOriginalSongNamesList();
+        }
         private void FillOriginalSongNamesList()
         {
             foreach (AudioLineProperties properties in audioLines)
@@ -55,12 +64,6 @@ namespace PistolWhipModSelector
 
                 OriginalSongNamesListBox.Items.Add(newItem);
             }
-        }
-
-        private void OriginalSongCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            OriginalSongNamesListBox.Items.Clear();
-            FillOriginalSongNamesList();
         }
     }
 }
