@@ -40,6 +40,7 @@
             this.CustomSongsReplaceButton = new System.Windows.Forms.Button();
             this.CustomSongsDeleteButton = new System.Windows.Forms.Button();
             this.CustomSongsEditButton = new System.Windows.Forms.Button();
+            this.Creator = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CustomSongsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +84,6 @@
             // CustomSongsDataGridView
             // 
             this.CustomSongsDataGridView.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.CustomSongsDataGridView.AllowDrop = true;
             this.CustomSongsDataGridView.AllowUserToAddRows = false;
             this.CustomSongsDataGridView.AllowUserToDeleteRows = false;
             this.CustomSongsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -123,6 +123,7 @@
             // 
             this.ReloadAllButton.BackgroundImage = global::PistolWhipModSelector.Pictures.Reload;
             this.ReloadAllButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ReloadAllButton.Enabled = false;
             this.ReloadAllButton.Location = new System.Drawing.Point(758, 12);
             this.ReloadAllButton.Name = "ReloadAllButton";
             this.ReloadAllButton.Size = new System.Drawing.Size(30, 30);
@@ -132,6 +133,7 @@
             // 
             // CustomSongsResetButton
             // 
+            this.CustomSongsResetButton.Enabled = false;
             this.CustomSongsResetButton.Location = new System.Drawing.Point(370, 16);
             this.CustomSongsResetButton.Name = "CustomSongsResetButton";
             this.CustomSongsResetButton.Size = new System.Drawing.Size(75, 23);
@@ -142,6 +144,7 @@
             // 
             // CustomSongsReplaceButton
             // 
+            this.CustomSongsReplaceButton.Enabled = false;
             this.CustomSongsReplaceButton.Location = new System.Drawing.Point(451, 16);
             this.CustomSongsReplaceButton.Name = "CustomSongsReplaceButton";
             this.CustomSongsReplaceButton.Size = new System.Drawing.Size(75, 23);
@@ -152,6 +155,7 @@
             // 
             // CustomSongsDeleteButton
             // 
+            this.CustomSongsDeleteButton.Enabled = false;
             this.CustomSongsDeleteButton.Location = new System.Drawing.Point(561, 16);
             this.CustomSongsDeleteButton.Name = "CustomSongsDeleteButton";
             this.CustomSongsDeleteButton.Size = new System.Drawing.Size(75, 23);
@@ -162,6 +166,7 @@
             // 
             // CustomSongsEditButton
             // 
+            this.CustomSongsEditButton.Enabled = false;
             this.CustomSongsEditButton.Location = new System.Drawing.Point(642, 16);
             this.CustomSongsEditButton.Name = "CustomSongsEditButton";
             this.CustomSongsEditButton.Size = new System.Drawing.Size(75, 23);
@@ -170,11 +175,21 @@
             this.CustomSongsEditButton.UseVisualStyleBackColor = true;
             this.CustomSongsEditButton.Click += new System.EventHandler(this.CustomSongsEditButton_Click);
             // 
+            // Creator
+            // 
+            this.Creator.AutoSize = true;
+            this.Creator.Location = new System.Drawing.Point(668, 440);
+            this.Creator.Name = "Creator";
+            this.Creator.Size = new System.Drawing.Size(126, 13);
+            this.Creator.TabIndex = 9;
+            this.Creator.Text = "Created by PaRcS#2179";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.Creator);
             this.Controls.Add(this.CustomSongsEditButton);
             this.Controls.Add(this.CustomSongsDeleteButton);
             this.Controls.Add(this.CustomSongsReplaceButton);
@@ -208,6 +223,7 @@
         private System.Windows.Forms.Button CustomSongsReplaceButton;
         private System.Windows.Forms.Button CustomSongsDeleteButton;
         private System.Windows.Forms.Button CustomSongsEditButton;
+        private System.Windows.Forms.Label Creator;
     }
 }
 

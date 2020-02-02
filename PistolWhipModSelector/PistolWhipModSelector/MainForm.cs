@@ -116,6 +116,13 @@ namespace PistolWhipModSelector
                     counter++;
                 }
             }
+
+            CustomSongsDataGridView.AllowDrop = true;
+            CustomSongsDeleteButton.Enabled = true;
+            CustomSongsEditButton.Enabled = true;
+            CustomSongsReplaceButton.Enabled = true;
+            CustomSongsResetButton.Enabled = true;
+            ReloadAllButton.Enabled = true;
         }
 
         private void CustomSongsDataGridView_DragDrop(object sender, DragEventArgs e)
