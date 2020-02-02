@@ -29,7 +29,7 @@ namespace PistolWhipModSelector.SaveOriginalFiles
             foreach (AudioLineProperties lineProperties in audioLines)
             {
                 string file = lineProperties.ID + ".wem";
-                File.Copy(GlobalVariables.SongsFolderPath + @"\" + file, GlobalVariables.OriginalSongsFolderPath + @"\" + lineProperties.ID + "_" + lineProperties.AudioName + "_backup.wem", true);
+                File.Copy(GlobalVariables.SongsFolderPath + @"\" + file, GlobalVariables.OriginalSongsFolderPath + @"\" + lineProperties.ID + ".wem", true);
             }
         }
     }

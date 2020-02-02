@@ -36,6 +36,8 @@
             this.songAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.songPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReloadAllButton = new System.Windows.Forms.Button();
+            this.CustomSongsResetButton = new System.Windows.Forms.Button();
+            this.CustomSongsReplaceButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CustomSongsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,6 +95,7 @@
             this.CustomSongsDataGridView.MultiSelect = false;
             this.CustomSongsDataGridView.Name = "CustomSongsDataGridView";
             this.CustomSongsDataGridView.RowHeadersVisible = false;
+            this.CustomSongsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CustomSongsDataGridView.ShowEditingIcon = false;
             this.CustomSongsDataGridView.Size = new System.Drawing.Size(418, 384);
             this.CustomSongsDataGridView.TabIndex = 3;
@@ -125,11 +128,33 @@
             this.ReloadAllButton.UseVisualStyleBackColor = true;
             this.ReloadAllButton.Click += new System.EventHandler(this.ReloadAllButton_Click);
             // 
+            // CustomSongsResetButton
+            // 
+            this.CustomSongsResetButton.Location = new System.Drawing.Point(370, 16);
+            this.CustomSongsResetButton.Name = "CustomSongsResetButton";
+            this.CustomSongsResetButton.Size = new System.Drawing.Size(75, 23);
+            this.CustomSongsResetButton.TabIndex = 5;
+            this.CustomSongsResetButton.Text = "Reset Song";
+            this.CustomSongsResetButton.UseVisualStyleBackColor = true;
+            this.CustomSongsResetButton.Click += new System.EventHandler(this.CustomSongsResetButton_Click);
+            // 
+            // CustomSongsReplaceButton
+            // 
+            this.CustomSongsReplaceButton.Location = new System.Drawing.Point(451, 16);
+            this.CustomSongsReplaceButton.Name = "CustomSongsReplaceButton";
+            this.CustomSongsReplaceButton.Size = new System.Drawing.Size(75, 23);
+            this.CustomSongsReplaceButton.TabIndex = 6;
+            this.CustomSongsReplaceButton.Text = "Replace";
+            this.CustomSongsReplaceButton.UseVisualStyleBackColor = true;
+            this.CustomSongsReplaceButton.Click += new System.EventHandler(this.CustomSongsReplaceButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CustomSongsReplaceButton);
+            this.Controls.Add(this.CustomSongsResetButton);
             this.Controls.Add(this.ReloadAllButton);
             this.Controls.Add(this.CustomSongsDataGridView);
             this.Controls.Add(this.OriginalSongShowNameCheckBox);
@@ -154,6 +179,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn songAuthor;
         private System.Windows.Forms.DataGridViewTextBoxColumn songPath;
         private System.Windows.Forms.Button ReloadAllButton;
+        private System.Windows.Forms.Button CustomSongsResetButton;
+        private System.Windows.Forms.Button CustomSongsReplaceButton;
     }
 }
 

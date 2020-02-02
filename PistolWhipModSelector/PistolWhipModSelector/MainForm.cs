@@ -128,5 +128,32 @@ namespace PistolWhipModSelector
         {
             e.Effect = DragDropEffects.Copy;
         }
+
+        private void CustomSongsResetButton_Click(object sender, EventArgs e)
+        {
+            string destinationPath = GlobalVariables.ModsFolderPath + "\\Original\\" + GlobalVariables.CurrentID + ".wem";
+
+            this.ReplaceSong(destinationPath);
+        }
+        private void CustomSongsReplaceButton_Click(object sender, EventArgs e)
+        {
+            if (CustomSongsDataGridView.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = CustomSongsDataGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = CustomSongsDataGridView.Rows[selectedrowindex];
+                string destinationPath = Convert.ToString(selectedRow.Cells["songPath"].Value);
+
+                if (!String.IsNullOrWhiteSpace(destinationPath))
+                {
+                    this.ReplaceSong(destinationPath);
+                }
+            }
+        }
+
+        private void ReplaceSong(string destinationPath)
+        {
+            string targetPath = GlobalVariables.SongsFolderPath + "\\" + GlobalVariables.CurrentID + ".wem";
+            File.Copy(destinationPath, targetPath, true);
+        }
     }
 }
