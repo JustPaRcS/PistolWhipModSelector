@@ -38,6 +38,8 @@
             this.ReloadAllButton = new System.Windows.Forms.Button();
             this.CustomSongsResetButton = new System.Windows.Forms.Button();
             this.CustomSongsReplaceButton = new System.Windows.Forms.Button();
+            this.CustomSongsDeleteButton = new System.Windows.Forms.Button();
+            this.CustomSongsEditButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CustomSongsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,11 +150,33 @@
             this.CustomSongsReplaceButton.UseVisualStyleBackColor = true;
             this.CustomSongsReplaceButton.Click += new System.EventHandler(this.CustomSongsReplaceButton_Click);
             // 
+            // CustomSongsDeleteButton
+            // 
+            this.CustomSongsDeleteButton.Location = new System.Drawing.Point(561, 16);
+            this.CustomSongsDeleteButton.Name = "CustomSongsDeleteButton";
+            this.CustomSongsDeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.CustomSongsDeleteButton.TabIndex = 7;
+            this.CustomSongsDeleteButton.Text = "Delete";
+            this.CustomSongsDeleteButton.UseVisualStyleBackColor = true;
+            this.CustomSongsDeleteButton.Click += new System.EventHandler(this.CustomSongsDeleteButton_Click);
+            // 
+            // CustomSongsEditButton
+            // 
+            this.CustomSongsEditButton.Location = new System.Drawing.Point(642, 16);
+            this.CustomSongsEditButton.Name = "CustomSongsEditButton";
+            this.CustomSongsEditButton.Size = new System.Drawing.Size(75, 23);
+            this.CustomSongsEditButton.TabIndex = 8;
+            this.CustomSongsEditButton.Text = "Edit";
+            this.CustomSongsEditButton.UseVisualStyleBackColor = true;
+            this.CustomSongsEditButton.Click += new System.EventHandler(this.CustomSongsEditButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CustomSongsEditButton);
+            this.Controls.Add(this.CustomSongsDeleteButton);
             this.Controls.Add(this.CustomSongsReplaceButton);
             this.Controls.Add(this.CustomSongsResetButton);
             this.Controls.Add(this.ReloadAllButton);
@@ -160,8 +184,9 @@
             this.Controls.Add(this.OriginalSongShowNameCheckBox);
             this.Controls.Add(this.OriginalSongShowIDCheckBox);
             this.Controls.Add(this.OriginalSongNamesListBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Pistol Whip Custom Songs";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CustomSongsDataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -181,6 +206,8 @@
         private System.Windows.Forms.Button ReloadAllButton;
         private System.Windows.Forms.Button CustomSongsResetButton;
         private System.Windows.Forms.Button CustomSongsReplaceButton;
+        private System.Windows.Forms.Button CustomSongsDeleteButton;
+        private System.Windows.Forms.Button CustomSongsEditButton;
     }
 }
 

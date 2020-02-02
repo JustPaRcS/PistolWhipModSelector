@@ -164,7 +164,9 @@
             this.Controls.Add(this.CustomSongTitleTextBox);
             this.Controls.Add(this.CustomSongTitleLabel);
             this.Controls.Add(this.FilesListBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AddNewSongsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add new songs";
             this.Load += new System.EventHandler(this.AddNewSongsForm_Load);
             this.ResumeLayout(false);

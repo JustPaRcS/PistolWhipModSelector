@@ -26,15 +26,6 @@ namespace PistolWhipModSelector
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.ReloadSongs();
-        }
-        private void ReloadAllButton_Click(object sender, EventArgs e)
-        {
-            OriginalSongNamesListBox.SetSelected(OriginalSongNamesListBox.SelectedIndex, true);
-        }
-
-        private void ReloadSongs()
-        {
             ReadAllAudioSongs readAllAudioSongs = new ReadAllAudioSongs(GlobalVariables.GameFolderPath);
             this.audioLines = readAllAudioSongs.AudioLines;
 
@@ -44,6 +35,15 @@ namespace PistolWhipModSelector
             GlobalVariables.GetCustomSongFolderPath(audioLines[3].ID);
 
             this.FillOriginalSongNamesList();
+        }
+        private void ReloadAllButton_Click(object sender, EventArgs e)
+        {
+            this.ReloadSongs();
+        }
+
+        private void ReloadSongs()
+        {
+            OriginalSongNamesListBox.SetSelected(OriginalSongNamesListBox.SelectedIndex, true);
         }
 
         private void OriginalSongCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -122,6 +122,8 @@ namespace PistolWhipModSelector
         {
             string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             AddNewSongs.AddNewSongs addNewSongs = new AddNewSongs.AddNewSongs(fileList);
+
+            this.ReloadSongs();
         }
 
         private void CustomSongsDataGridView_DragEnter(object sender, DragEventArgs e)
@@ -135,18 +137,40 @@ namespace PistolWhipModSelector
 
             this.ReplaceSong(destinationPath);
         }
+
         private void CustomSongsReplaceButton_Click(object sender, EventArgs e)
         {
-            if (CustomSongsDataGridView.SelectedCells.Count > 0)
-            {
-                int selectedrowindex = CustomSongsDataGridView.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = CustomSongsDataGridView.Rows[selectedrowindex];
-                string destinationPath = Convert.ToString(selectedRow.Cells["songPath"].Value);
+            string destinationPath = this.GetDestinationPath();
 
-                if (!String.IsNullOrWhiteSpace(destinationPath))
-                {
-                    this.ReplaceSong(destinationPath);
-                }
+            if (!String.IsNullOrWhiteSpace(destinationPath))
+            {
+                this.ReplaceSong(destinationPath);
+            }
+        }
+
+        private void CustomSongsDeleteButton_Click(object sender, EventArgs e)
+        {
+            string path = this.GetDestinationPath();
+
+            if (!String.IsNullOrWhiteSpace(path))
+            {
+                File.Delete(path);
+            }
+            this.ReloadSongs();
+        }
+
+        private void CustomSongsEditButton_Click(object sender, EventArgs e)
+        {
+            string[] path = { this.GetDestinationPath() };
+
+            if (!String.IsNullOrWhiteSpace(path[0]))
+            {
+                AddNewSongs.AddNewSongs songs = new AddNewSongs.AddNewSongs(path);
+
+                if(songs.changed)
+                    File.Delete(path[0]);
+
+                this.ReloadSongs();
             }
         }
 
@@ -154,6 +178,20 @@ namespace PistolWhipModSelector
         {
             string targetPath = GlobalVariables.SongsFolderPath + "\\" + GlobalVariables.CurrentID + ".wem";
             File.Copy(destinationPath, targetPath, true);
+        }
+
+        private string GetDestinationPath()
+        {
+            if (CustomSongsDataGridView.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = CustomSongsDataGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = CustomSongsDataGridView.Rows[selectedrowindex];
+                string destinationPath = Convert.ToString(selectedRow.Cells["songPath"].Value);
+
+                return destinationPath;
+            }
+
+            return null;
         }
     }
 }

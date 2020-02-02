@@ -11,6 +11,8 @@ namespace PistolWhipModSelector.AddNewSongs
     class AddNewSongs
     {
         private List<NewSongProperties> SongProperties;
+        public bool changed = false;
+
 
         public AddNewSongs(string[] fileList)
         {
@@ -62,6 +64,7 @@ namespace PistolWhipModSelector.AddNewSongs
                 else
                     this.CopyFileToTarget(songProperties.SongDestinationPath, targetPath);
             }
+            this.changed = true;
         }
 
         private string GetTargetPath(NewSongProperties songProperties)
@@ -74,7 +77,7 @@ namespace PistolWhipModSelector.AddNewSongs
 
         private void CopyFileToTarget(string destinationPath, string targetPath)
         {
-            File.Copy(destinationPath, targetPath);
+            File.Copy(destinationPath, targetPath, true);
         }
         private void MoveFileToTarget(string destinationPath, string targetPath)
         {
