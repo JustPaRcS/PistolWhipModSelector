@@ -4,7 +4,19 @@ Currently **NOT** working with Oculus Quest.
 
 If you need any assistantance or support, message **PaRcS#2179** on discord.
 
+## Download
+
+Go to "Download EXE here" and download the exe in it.
+
 ## How to use?
+
+### File
+
+Place the exe wherever you want to (to not lose it, you could place it into your game folder).
+
+**Add the exe to the trusted files in your antivirus program to avoid many problems.**
+
+**Start the exe as administrator to avoid not enought rights problems.**
 
 ### Start
 
