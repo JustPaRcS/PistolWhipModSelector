@@ -4,6 +4,8 @@ Currently **NOT** working with Oculus Quest.
 
 If you need any assistantance or support, message **PaRcS#2179** on discord.
 
+Songs need to be in "wem" format.
+
 ## Download
 
 Go to "Download EXE here" and download the exe in it.
