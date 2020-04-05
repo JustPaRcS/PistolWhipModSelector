@@ -1,61 +1,59 @@
 # Pistol Whip Custom Songs
+A simple song manager for Pistol Whip VR game.
 
-Currently **NOT** working with Oculus Quest.
+![custom_song_in_app](img/custom_song_in_app.png)
 
-If you need any assistantance or support, message **PaRcS#2179** on discord.
+**Notes:**
+* This is for windows only, Oculus Quest or mac variants are not supported by this app.
+* The below guide is based around the steam build of Pistol Whip
+* Songs must be in wem format to be used with this tool.
+* If you need any assistance or support, message **PaRcS#2179** on discord.
 
-Songs need to be in "wem" format.
+**Warning:**  
+Before continuing, make sure to revert any custom songs you may have installed, this tool will backup the stock songs when it launches for the first time, preferably you would want the original game songs to be backed up and not your own.
 
-## Download
 
-Go to "Download EXE here" and download the exe in it.
+## Usage?
 
-## How to use?
+1. Download the exe from the "Download EXE here" directory of this repo and save it anywhere on disk i.e. Desktop
+2. Run the tool as Administrator (Right click exe and select "Run as Administrator"), the tool will writing to your game install directory, the tool must have rights to do so, typically program files and subdirectories are protected, you can also modify permissions on the game directory if preferred
+3. You'll be asked to select your Pistol Whip game exe, i.e. ```C:\Program Files\Steam\steamapps\common\Pistol Whip\Pistol Whip.exe```, if installed via steam it may have already been auto detected.
+4. Assuming you ran the tool with Administrator and it could write to your game directory you will find a new folder inside the Pistol Whip root directory called Mods
 
-### File
+![directory](img/directory.png)
 
-Place the exe wherever you want to (to not lose it, you could place it into your game folder).
+This directory will contain another 2 folders, Custom Songs and Original.
 
-**Add the exe to the trusted files in your antivirus program to avoid many problems.**
+* "Original" will contain the song backups
+* "Custom Songs" is where we will put our custom .wem files
 
-**Start the exe as administrator to avoid not enought rights problems.**
+5. Navigate to the custom songs folder
 
-### Start
+![custom_songs_folder](img/custom_songs_folder.png)
 
-You'll be ask for the folder where your "Pistol Whip.exe" is located. Open the file explorer with the file explorer button and select the "Pistol Whip.exe".
-(Steam folder will usually be found automatic)
+6. You will notice folders representing the stock songs as an example we will open the "562235120 - Replicants" folder
+7. Copy a custom and compatible wem file into this folder
+8. Finally rename the newly added file in the following format
 
-After you selected the right folder, press OK.
+```<SONG_CODE>-<TITLE>-<AUTHOR>.wem```
 
-> AppData folder will be created and contains the folder path.
+i.e.
 
-Do **NOT** change any of the files in the AppData folder!
+![song_rename](img/song_rename.png)
 
-> Custom Songs folder will be created and contains:
-> - "Original" folder with backed up original songs from your game folder
-> - "Custom Songs" folder with folders that are named by the original existing songs
+If you did this correctly you can return to the PistolWhipCustomSongs1.0 app, select Replicants from the left hand pane and press refresh to see your custom song.
 
-### Add songs
+![custom_song_in_app](img/custom_song_in_app.png)
 
-You can now select a original song name that'll be replaced later. 
-Drop now your files in the list.
-
-Now you need to write:
-- the song name from your file
-- the author name from your file
-- (You can check "Move" but some antivirus programs detect this "Pistol Whip Custom Songs.exe" as malware so use it as your own risk or add the progrma to the trusted ones)
-
-Press the check button to save your input and press "Finish" if you did this with all your dropped files.
-> Your file will now be copied/moved into the right custom songs folder.
-
+## UI Elements
 ### Replace
+Will replace the current song with the selected custom song.
 
-If you now have songs in the list, you can select one and press the "Replace" button to replace the selected song with the original in the game folder.
+### Reset Song
+Will revert the selected song back to the original unmodified version.
 
-### Reset
+### Delete /
+Simply deletes the selected custom song
 
-Press "Reset Song" button to replace the song in your game folder with the right one in your "Custom Songs/Original" folder.
-
-### Delete / Edit
-
-If you wanna delete a custom song, select it and press the "Delete" button. And if you wanna edit the Title/Author, just press the "Edit" button and follow the Add songs instructions.
+## Edit
+Provides a ui to edit attributes about the song i.e. author title
