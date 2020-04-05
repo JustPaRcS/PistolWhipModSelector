@@ -15,7 +15,7 @@ Before continuing, make sure to revert any custom songs you may have installed, 
 
 ## Usage?
 
-1. Download the exe from the "Download EXE here" directory of this repo and save it anywhere on disk i.e. Desktop
+1. Download the exe from the releases of this repo and save it anywhere on disk i.e. Desktop
 2. Run the tool as Administrator (Right click exe and select "Run as Administrator"), the tool will writing to your game install directory, the tool must have rights to do so, typically program files and subdirectories are protected, you can also modify permissions on the game directory if preferred
 3. You'll be asked to select your Pistol Whip game exe, i.e. ```C:\Program Files\Steam\steamapps\common\Pistol Whip\Pistol Whip.exe```, if installed via steam it may have already been auto detected.
 4. Assuming you ran the tool with Administrator and it could write to your game directory you will find a new folder inside the Pistol Whip root directory called Mods
