@@ -35,6 +35,7 @@ namespace PistolWhipModSelector
             GlobalVariables.GetCustomSongFolderPath(audioLines[3].ID);
 
             this.FillOriginalSongNamesList();
+            this.ChangeState("Ready", Color.Green);
         }
         private void ReloadAllButton_Click(object sender, EventArgs e)
         {
@@ -123,6 +124,8 @@ namespace PistolWhipModSelector
             CustomSongsReplaceButton.Enabled = true;
             CustomSongsResetButton.Enabled = true;
             ReloadAllButton.Enabled = true;
+
+            this.ChangeState("Ready", Color.Green);
         }
 
         private void CustomSongsDataGridView_DragDrop(object sender, DragEventArgs e)
@@ -181,10 +184,28 @@ namespace PistolWhipModSelector
             }
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/JustPaRcS/PistolWhipModSelector");
+        }
+
+        private void CustomSongsDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            this.ChangeState("Ready", Color.Green);
+        }
+
         private void ReplaceSong(string destinationPath)
         {
             string targetPath = GlobalVariables.SongsFolderPath + "\\" + GlobalVariables.CurrentID + ".wem";
-            File.Copy(destinationPath, targetPath, true);
+            try
+            {
+                File.Copy(destinationPath, targetPath, true);
+                this.ChangeState("Finished replacing", Color.Green);
+            }
+            catch (IOException e)
+            {
+                this.ChangeState("Error: " + e.Message, Color.Red);
+            }
         }
 
         private string GetDestinationPath()
@@ -201,9 +222,10 @@ namespace PistolWhipModSelector
             return null;
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ChangeState(string text, Color color)
         {
-            System.Diagnostics.Process.Start("https://github.com/JustPaRcS/PistolWhipModSelector");
+            CopyStateLabel.Text = text;
+            CopyStateLabel.ForeColor = color;
         }
     }
 }

@@ -26,6 +26,8 @@ namespace PistolWhipModSelector.Settings
             this.CheckMainSettingsExist();
 
             this.LoadXmlDoc();
+
+            this.UpdateVersion();
         }
 
         private void CheckMainSettingsFolderExist()
@@ -145,6 +147,17 @@ namespace PistolWhipModSelector.Settings
         {
             XmlNode node = xmlDoc.SelectSingleNode("//PistolWhipModSettings/settings/gameFolderPath");
             return node.InnerText;
+        }
+        public void UpdateVersion()
+        {
+            XmlNode node = xmlDoc.SelectSingleNode("//PistolWhipModSettings/info/version");
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+            if (node.InnerText != version)
+            {
+                node.InnerText = version;
+                this.SaveXmlDoc();
+            }
         }
     }
 }

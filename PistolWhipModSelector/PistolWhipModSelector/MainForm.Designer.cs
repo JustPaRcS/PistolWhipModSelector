@@ -42,6 +42,7 @@
             this.CustomSongsEditButton = new System.Windows.Forms.Button();
             this.Creator = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.CopyStateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CustomSongsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,8 +101,9 @@
             this.CustomSongsDataGridView.RowHeadersVisible = false;
             this.CustomSongsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CustomSongsDataGridView.ShowEditingIcon = false;
-            this.CustomSongsDataGridView.Size = new System.Drawing.Size(418, 384);
+            this.CustomSongsDataGridView.Size = new System.Drawing.Size(418, 352);
             this.CustomSongsDataGridView.TabIndex = 3;
+            this.CustomSongsDataGridView.SelectionChanged += new System.EventHandler(this.CustomSongsDataGridView_SelectionChanged);
             this.CustomSongsDataGridView.DragDrop += new System.Windows.Forms.DragEventHandler(this.CustomSongsDataGridView_DragDrop);
             this.CustomSongsDataGridView.DragEnter += new System.Windows.Forms.DragEventHandler(this.CustomSongsDataGridView_DragEnter);
             // 
@@ -196,11 +198,24 @@
             this.linkLabel1.Text = "github.com/JustPaRcS/PistolWhipModSelector";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // CopyStateLabel
+            // 
+            this.CopyStateLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CopyStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CopyStateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.CopyStateLabel.Location = new System.Drawing.Point(370, 399);
+            this.CopyStateLabel.Name = "CopyStateLabel";
+            this.CopyStateLabel.Size = new System.Drawing.Size(418, 29);
+            this.CopyStateLabel.TabIndex = 11;
+            this.CopyStateLabel.Text = "State";
+            this.CopyStateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.CopyStateLabel);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.Creator);
             this.Controls.Add(this.CustomSongsEditButton);
@@ -238,6 +253,7 @@
         private System.Windows.Forms.Button CustomSongsEditButton;
         private System.Windows.Forms.Label Creator;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label CopyStateLabel;
     }
 }
 
