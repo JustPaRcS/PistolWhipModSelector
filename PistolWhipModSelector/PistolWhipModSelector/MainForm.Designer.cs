@@ -48,6 +48,8 @@
             // 
             // OriginalSongNamesListBox
             // 
+            this.OriginalSongNamesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.OriginalSongNamesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OriginalSongNamesListBox.FormattingEnabled = true;
             this.OriginalSongNamesListBox.ItemHeight = 20;
@@ -88,6 +90,9 @@
             this.CustomSongsDataGridView.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.CustomSongsDataGridView.AllowUserToAddRows = false;
             this.CustomSongsDataGridView.AllowUserToDeleteRows = false;
+            this.CustomSongsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CustomSongsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CustomSongsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomSongsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -180,6 +185,7 @@
             // 
             // Creator
             // 
+            this.Creator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Creator.AutoSize = true;
             this.Creator.Location = new System.Drawing.Point(668, 440);
             this.Creator.Name = "Creator";
@@ -189,6 +195,7 @@
             // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(12, 440);
             this.linkLabel1.Name = "linkLabel1";
@@ -200,6 +207,7 @@
             // 
             // CopyStateLabel
             // 
+            this.CopyStateLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.CopyStateLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CopyStateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CopyStateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -227,7 +235,7 @@
             this.Controls.Add(this.OriginalSongShowNameCheckBox);
             this.Controls.Add(this.OriginalSongShowIDCheckBox);
             this.Controls.Add(this.OriginalSongNamesListBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimumSize = new System.Drawing.Size(816, 500);
             this.Name = "MainForm";
             this.Text = "Pistol Whip Custom Songs";
             this.Load += new System.EventHandler(this.MainForm_Load);
