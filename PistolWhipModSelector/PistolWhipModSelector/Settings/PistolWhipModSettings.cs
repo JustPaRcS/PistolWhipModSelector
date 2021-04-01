@@ -44,7 +44,7 @@ namespace PistolWhipModSelector.Settings
             {
                 Directory.CreateDirectory(this.MainSettingsFolderPath);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 MessageBox.Show("Failed to create settings folder!");
                 Application.Exit();

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -38,7 +40,19 @@ namespace PistolWhipModSelector.AddNewSongs
                 if (CustomSongMoveCheckBox.Checked)
                     move = true;
 
-                NewSongProperties newSong = new NewSongProperties("", "", file, "", move);
+                NewSongProperties newSong;
+
+                string pattern = ".*\\\\\\d*(-{1})(.*)(-{1})(.*)";
+                Regex regex = new Regex(pattern);
+                if (regex.IsMatch(file))
+                {
+                    string[] values = Path.GetFileNameWithoutExtension(file).Split('-');
+                    newSong = new NewSongProperties(values[1], values[2], file, "", move);
+                }
+                else
+                {
+                    newSong = new NewSongProperties("", "", file, "", move);
+                }
                 this.newSongs.Add(newSong);
             }
         }
@@ -87,7 +101,7 @@ namespace PistolWhipModSelector.AddNewSongs
         {
             if (CustomSongMoveCheckBox.Checked)
             {
-                var result = MessageBox.Show("Your anti-virus program might get triggered!\n \nStill wanna enable?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                /*var result = MessageBox.Show("Your anti-virus program might get triggered!\n \nStill wanna enable?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (result == DialogResult.OK)
                 {
@@ -98,6 +112,7 @@ namespace PistolWhipModSelector.AddNewSongs
                 {
                     CustomSongMoveCheckBox.Checked = false;
                 }
+                */
             }
         }
     }

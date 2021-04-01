@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.OriginalSongNamesListBox = new System.Windows.Forms.ListBox();
             this.OriginalSongShowIDCheckBox = new System.Windows.Forms.CheckBox();
             this.OriginalSongShowNameCheckBox = new System.Windows.Forms.CheckBox();
             this.CustomSongsDataGridView = new System.Windows.Forms.DataGridView();
@@ -43,21 +42,9 @@
             this.Creator = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.CopyStateLabel = new System.Windows.Forms.Label();
+            this.songsTreeView = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.CustomSongsDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // OriginalSongNamesListBox
-            // 
-            this.OriginalSongNamesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.OriginalSongNamesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OriginalSongNamesListBox.FormattingEnabled = true;
-            this.OriginalSongNamesListBox.ItemHeight = 20;
-            this.OriginalSongNamesListBox.Location = new System.Drawing.Point(12, 44);
-            this.OriginalSongNamesListBox.Name = "OriginalSongNamesListBox";
-            this.OriginalSongNamesListBox.Size = new System.Drawing.Size(298, 384);
-            this.OriginalSongNamesListBox.TabIndex = 0;
-            this.OriginalSongNamesListBox.SelectedIndexChanged += new System.EventHandler(this.OriginalSongNamesListBox_SelectedIndexChanged);
             // 
             // OriginalSongShowIDCheckBox
             // 
@@ -218,11 +205,20 @@
             this.CopyStateLabel.Text = "State";
             this.CopyStateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // songsTreeView
+            // 
+            this.songsTreeView.Location = new System.Drawing.Point(12, 44);
+            this.songsTreeView.Name = "songsTreeView";
+            this.songsTreeView.Size = new System.Drawing.Size(309, 384);
+            this.songsTreeView.TabIndex = 12;
+            this.songsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.songsTreeView_AfterSelect);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.songsTreeView);
             this.Controls.Add(this.CopyStateLabel);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.Creator);
@@ -234,7 +230,6 @@
             this.Controls.Add(this.CustomSongsDataGridView);
             this.Controls.Add(this.OriginalSongShowNameCheckBox);
             this.Controls.Add(this.OriginalSongShowIDCheckBox);
-            this.Controls.Add(this.OriginalSongNamesListBox);
             this.MinimumSize = new System.Drawing.Size(816, 500);
             this.Name = "MainForm";
             this.Text = "Pistol Whip Custom Songs";
@@ -246,8 +241,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox OriginalSongNamesListBox;
         private System.Windows.Forms.CheckBox OriginalSongShowIDCheckBox;
         private System.Windows.Forms.CheckBox OriginalSongShowNameCheckBox;
         private System.Windows.Forms.DataGridView CustomSongsDataGridView;
@@ -262,6 +255,7 @@
         private System.Windows.Forms.Label Creator;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label CopyStateLabel;
+        private System.Windows.Forms.TreeView songsTreeView;
     }
 }
 

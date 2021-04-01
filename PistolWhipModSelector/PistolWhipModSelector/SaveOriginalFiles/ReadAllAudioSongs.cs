@@ -10,37 +10,49 @@ namespace PistolWhipModSelector.SaveOriginalFiles
     class ReadAllAudioSongs
     {
         public List<AudioLineProperties> AudioLines { get; private set; }
-        private string GameFolderPath { get; set; }
 
-        public ReadAllAudioSongs(string gameFolderPath)
+        public ReadAllAudioSongs()
         {
-            this.GameFolderPath = gameFolderPath;
-
             this.AudioLines = this.GetAudioLines();
         }
 
-        private List<AudioLineProperties> GetAudioLines()
+        private List<AudioLineProperties> GetAudioLines(bool tryAgain = false)
         {
-            string filePath = GameFolderPath + @"\Pistol Whip_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Global.txt";
+            string filePath = GlobalVariables.GameFolderPath + @"\Pistol Whip_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Global.txt";
 
             List<AudioLineProperties> audios = new List<AudioLineProperties>();
 
-            using (StreamReader file = new StreamReader(filePath))
+            try
             {
-                string line;
-                bool found = false;
-
-                while ((line = file.ReadLine()) != null)
+                using (StreamReader file = new StreamReader(filePath))
                 {
-                    if(found == true && !String.IsNullOrWhiteSpace(line) && !line.Contains("visualizer") && !line.Contains("tutorial"))
-                    {
-                        audios.Add(TrimAudioLines(line));
-                    }
+                    string line;
+                    bool memoryAudioSectionFound = false;
 
-                    if (line.Contains("Streamed Audio"))
-                        found = true;
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        if (memoryAudioSectionFound && !String.IsNullOrWhiteSpace(line) && line.Contains("\\Music\\") && !line.Contains("mus_landing_area_lp") && !line.Contains("mus_tutorial") && !line.Contains("visualizer"))
+                        {
+                            AudioLineProperties currentAudioLine = this.TrimAudioLines(line);
+                            if(!audios.Exists(x=> x.ID == currentAudioLine.ID))
+                                audios.Add(currentAudioLine);
+                        }
+                        else
+                        {
+                            if (line.Contains("In Memory Audio"))
+                                memoryAudioSectionFound = true;
+                        }
+                    }
+                    file.Close();
                 }
-                file.Close();
+            }
+            catch(DirectoryNotFoundException)
+            {
+                if (!tryAgain)
+                {
+                    GamePath.FolderPath folderPath = new GamePath.FolderPath(true);
+                    audios = this.GetAudioLines(true);
+                }
             }
 
             return audios;

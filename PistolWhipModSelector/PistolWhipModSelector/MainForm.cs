@@ -26,7 +26,7 @@ namespace PistolWhipModSelector
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ReadAllAudioSongs readAllAudioSongs = new ReadAllAudioSongs(GlobalVariables.GameFolderPath);
+            ReadAllAudioSongs readAllAudioSongs = new ReadAllAudioSongs();
             this.audioLines = readAllAudioSongs.AudioLines;
 
             OriginalFilesSaver originalFilesSaver = new OriginalFilesSaver(this.audioLines);
@@ -44,18 +44,17 @@ namespace PistolWhipModSelector
 
         private void ReloadSongs()
         {
-            OriginalSongNamesListBox.SetSelected(OriginalSongNamesListBox.SelectedIndex, true);
+            songsTreeView.SelectedNode = songsTreeView.SelectedNode;
         }
 
         private void OriginalSongCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            OriginalSongNamesListBox.Items.Clear();
             FillOriginalSongNamesList();
         }
+
         private void FillOriginalSongNamesList()
         {
-            OriginalSongNamesListBox.Items.Clear();
-
+            songsTreeView.Nodes.Clear();
             foreach (AudioLineProperties properties in audioLines)
             {
                 string newItem = "";
@@ -77,17 +76,43 @@ namespace PistolWhipModSelector
                     break;
                 }
 
-                OriginalSongNamesListBox.Items.Add(newItem);
+                bool found = false;
+                TreeNode newNode = new TreeNode();
+                newNode.Text = newItem;
+                newNode.Tag = properties.ID;
+                foreach (TreeNode node in songsTreeView.Nodes)
+                {
+                    if (node.Text == properties.AudioSectionName)
+                    {
+                        node.Nodes.Add(newNode);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    TreeNode newSection = new TreeNode(properties.AudioSectionName);
+
+                    newSection.Nodes.Add(newNode);
+                    songsTreeView.Nodes.Add(newSection);
+                }
             }
+
+            songsTreeView.ExpandAll();
         }
 
-        private void OriginalSongNamesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void songsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            if ((string)songsTreeView.SelectedNode.Tag == null)
+            {
+                return;
+            }
+
             CustomSongsDataGridView.Rows.Clear();
+            AudioLineProperties selectedAudio = audioLines.Find(x => x.ID == (string)songsTreeView.SelectedNode.Tag);
+            string customSongsFolderPath = GlobalVariables.GetCustomSongFolderPath(selectedAudio.ID);
 
-            string customSongsFolderPath = GlobalVariables.GetCustomSongFolderPath(audioLines[OriginalSongNamesListBox.SelectedIndex].ID);
-
-            GlobalVariables.CurrentID = audioLines[OriginalSongNamesListBox.SelectedIndex].ID;
+            GlobalVariables.CurrentID = selectedAudio.ID;
 
             string[] files = Directory.GetFiles(customSongsFolderPath, "*.wem");
 
@@ -125,7 +150,7 @@ namespace PistolWhipModSelector
             CustomSongsResetButton.Enabled = true;
             ReloadAllButton.Enabled = true;
 
-            this.ChangeState("Ready", Color.Green);
+            this.ChangeState($"\"{selectedAudio.AudioNameID}\" selected!", Color.Green);
         }
 
         private void CustomSongsDataGridView_DragDrop(object sender, DragEventArgs e)

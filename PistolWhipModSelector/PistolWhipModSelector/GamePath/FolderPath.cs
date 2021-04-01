@@ -15,9 +15,9 @@ namespace PistolWhipModSelector.GamePath
         public string SteamGamePath { get; private set; }
         public bool ForceExit { get; private set; } = false;
 
-        public FolderPath(PistolWhipModSettings settings, bool forceChange = false)
+        public FolderPath(bool forceChange = false)
         {
-            if (String.IsNullOrWhiteSpace(settings.GetGameFolderPath()) || forceChange == true)
+            if (String.IsNullOrWhiteSpace(Program.modSettings.GetGameFolderPath()) || forceChange == true)
             {
                 GlobalVariables.SteamPath = this.GetSteamPath();
                 if (!String.IsNullOrWhiteSpace(GlobalVariables.SteamPath))
@@ -33,19 +33,27 @@ namespace PistolWhipModSelector.GamePath
                     if (result == DialogResult.OK)
                     {
                         GlobalVariables.GameFolderPath = form.CustomGamePath;
-                        settings.SetGameFolderPath(GlobalVariables.GameFolderPath);
+                        Program.modSettings.SetGameFolderPath(GlobalVariables.GameFolderPath);
                     }
 
                     if (result == DialogResult.Cancel)
                     {
-                        if (String.IsNullOrWhiteSpace(settings.GetGameFolderPath()))
+                        if (String.IsNullOrWhiteSpace(Program.modSettings.GetGameFolderPath()))
                         {
                             MessageBox.Show("Forced exit because no game folder is set!", "No folder set!");
                             this.ForceExit = true;
                         }
                     }
                 }
+
+                this.RenewGlobalPaths();
             }
+        }
+
+        public void RenewGlobalPaths()
+        {
+            GlobalVariables.GameFolderPath = Program.modSettings.GetGameFolderPath();
+            GlobalVariables.SongsFolderPath = Program.modSettings.GetGameFolderPath() + @"\Pistol Whip_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows";
         }
 
         private string GetSteamPath()

@@ -10,6 +10,7 @@ namespace PistolWhipModSelector
 {
     static class Program
     {
+        public static PistolWhipModSettings modSettings;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -19,13 +20,12 @@ namespace PistolWhipModSelector
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            PistolWhipModSettings settings = new PistolWhipModSettings();
-            FolderPath folderPath = new FolderPath(settings);
+            Program.modSettings = new PistolWhipModSettings();
+            FolderPath folderPath = new FolderPath();
 
             if (folderPath.ForceExit == false)
             {
-                GlobalVariables.GameFolderPath = settings.GetGameFolderPath();
-                GlobalVariables.SongsFolderPath = settings.GetGameFolderPath() + @"\Pistol Whip_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows";
+                folderPath.RenewGlobalPaths();
 
                 ModsFolder modsFolder = new ModsFolder();
 
