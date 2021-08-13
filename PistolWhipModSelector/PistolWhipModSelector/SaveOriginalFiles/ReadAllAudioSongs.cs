@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PistolWhipModSelector.SaveOriginalFiles
 {
@@ -18,7 +19,23 @@ namespace PistolWhipModSelector.SaveOriginalFiles
 
         private List<AudioLineProperties> GetAudioLines(bool tryAgain = false)
         {
-            string filePath = GlobalVariables.GameFolderPath + @"\Pistol Whip_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Global.txt";
+            string filePath = "";
+
+            string[] files = Directory.GetFiles(GlobalVariables.GameFolderPath + @"\Pistol Whip_Data\", "Global.txt", SearchOption.AllDirectories);
+            if (files.Length == 1)
+            {
+                filePath = files[0];
+            }
+            else if (files.Length > 1)
+            {
+                MessageBox.Show("Found multiple 'Global.txt' files in 'Pistol Whip_Data'! \nExit program...");
+                Environment.Exit(1);
+            }
+            else
+            {
+                MessageBox.Show("Could not find 'Global.txt' in 'Pistol Whip_Data'! \nExit program...");
+                Environment.Exit(1);
+            }
 
             List<AudioLineProperties> audios = new List<AudioLineProperties>();
 
@@ -31,7 +48,7 @@ namespace PistolWhipModSelector.SaveOriginalFiles
 
                     while ((line = file.ReadLine()) != null)
                     {
-                        if (memoryAudioSectionFound && !String.IsNullOrWhiteSpace(line) && line.Contains("\\Music\\") && !line.Contains("mus_landing_area_lp") && !line.Contains("mus_tutorial") && !line.Contains("visualizer"))
+                        if (memoryAudioSectionFound && !String.IsNullOrWhiteSpace(line) && line.Contains("\\Music\\") && !line.Contains("sfx_") && !line.Contains("\\TestContent\\") && !line.Contains("mus_landing_area_lp") && !line.Contains("mus_tutorial") && !line.Contains("visualizer"))
                         {
                             AudioLineProperties currentAudioLine = this.TrimAudioLines(line);
                             if(!audios.Exists(x=> x.ID == currentAudioLine.ID))
