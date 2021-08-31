@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PistolWhipModSelector.Settings;
 using PistolWhipModSelector.SaveOriginalFiles;
 using System.IO;
+using System.Reflection;
 
 namespace PistolWhipModSelector
 {
@@ -22,6 +23,7 @@ namespace PistolWhipModSelector
         {
             this.modsFolder = modsFolder;
             InitializeComponent();
+            this.Text = "Pistol Whip Custom Songs v" + Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -82,7 +84,7 @@ namespace PistolWhipModSelector
                 newNode.Tag = properties.ID;
                 foreach (TreeNode node in songsTreeView.Nodes)
                 {
-                    if (node.Text == properties.AudioSectionName)
+                    if (node.Text.StartsWith(properties.AudioSectionName))
                     {
                         node.Nodes.Add(newNode);
                         found = true;
@@ -91,7 +93,7 @@ namespace PistolWhipModSelector
                 }
                 if (!found)
                 {
-                    TreeNode newSection = new TreeNode(properties.AudioSectionName);
+                    TreeNode newSection = new TreeNode(properties.AudioSectionName + " (" + audioLines.Where(x=> x.AudioSectionName == properties.AudioSectionName).Count() + ")");
 
                     newSection.Nodes.Add(newNode);
                     songsTreeView.Nodes.Add(newSection);

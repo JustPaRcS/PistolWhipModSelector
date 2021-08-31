@@ -207,6 +207,8 @@
             // 
             // songsTreeView
             // 
+            this.songsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.songsTreeView.Location = new System.Drawing.Point(12, 44);
             this.songsTreeView.Name = "songsTreeView";
             this.songsTreeView.Size = new System.Drawing.Size(309, 384);

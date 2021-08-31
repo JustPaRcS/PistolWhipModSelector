@@ -51,8 +51,12 @@ namespace PistolWhipModSelector.SaveOriginalFiles
                         if (memoryAudioSectionFound && !String.IsNullOrWhiteSpace(line) && line.Contains("\\Music\\") && !line.Contains("sfx_") && !line.Contains("\\TestContent\\") && !line.Contains("mus_landing_area_lp") && !line.Contains("mus_tutorial") && !line.Contains("visualizer"))
                         {
                             AudioLineProperties currentAudioLine = this.TrimAudioLines(line);
-                            if(!audios.Exists(x=> x.ID == currentAudioLine.ID))
-                                audios.Add(currentAudioLine);
+                            if (!audios.Exists(x => x.ID == currentAudioLine.ID))
+                            {
+                                if (File.Exists(GlobalVariables.SongsFolderPath + @"\" + currentAudioLine.ID + ".wem")){
+                                    audios.Add(currentAudioLine);
+                                }
+                            }
                         }
                         else
                         {
