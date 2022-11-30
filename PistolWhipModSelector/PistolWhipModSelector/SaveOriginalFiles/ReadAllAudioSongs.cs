@@ -21,7 +21,7 @@ namespace PistolWhipModSelector.SaveOriginalFiles
         {
             string filePath = "";
 
-            string[] files = Directory.GetFiles(GlobalVariables.GameFolderPath + @"\Pistol Whip_Data\", "Global.txt", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(GlobalVariables.GameFolderPath + @"\Pistol Whip_Data\StreamingAssets\Audio\GeneratedSoundBanks\Windows", "Global.txt", SearchOption.AllDirectories);
             if (files.Length == 1)
             {
                 filePath = files[0];
